@@ -79,7 +79,6 @@ def change_photo(message):
     
     with open(photo_path, 'wb') as new_file:
     new_file.write(downloaded_file)
-
     bot.send_message(message.chat.id, "Обложка успешно обновлена!")
 
 # Запуск бота
