@@ -71,14 +71,15 @@ def change_criteria(message):
     criteria_text = new_criteria_text.text
     bot.send_message(message.chat.id, "Требования успешно обновлены!")
 
-# Загрузка новой фотографии-приветствия
+## Загрузка новой фотографии-приветствия
 @bot.message_handler(content_types=['photo'], func=lambda message: message.caption == "Загрузить новую обложку")
 def change_photo(message):
     file_info = bot.get_file(message.photo[-1].file_id)
     downloaded_file = bot.download_file(file_info.file_path)
     
     with open(photo_path, 'wb') as new_file:
-    new_file.write(downloaded_file)
+        new_file.write(downloaded_file)
+    
     bot.send_message(message.chat.id, "Обложка успешно обновлена!")
 
 # Запуск бота
